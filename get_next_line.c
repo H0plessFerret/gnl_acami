@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/01 09:20:47 by acami             #+#    #+#             */
-/*   Updated: 2021/05/06 12:32:35 by acami            ###   ########.fr       */
+/*   Updated: 2021/05/06 12:34:17 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_next_line(int fd, char **line)
 		return (ft_panic_button(line));
 	while (1)
 	{
-		if (ft_read_and_validate(fd, fd_buff, head_fdlist) == -1)
+		if (ft_read_and_validate(fd, fd_buff, &head_fdlist) == -1)
 			return (ft_panic_button(line));
 		copy_result = ft_copy_buffer(fd_buff, line, &current_line_pos);
 		if (copy_result == 0)
@@ -43,7 +43,7 @@ int	ft_read_and_validate(int fd, t_fdlist *fd_buff, t_fdlist **head_fdlist)
 		fd_buff->sym_recieved = read(fd, fd_buff->buffer, BUFFER_SIZE);
 		if (fd_buff->sym_recieved == -1)
 		{
-			ft_delelem(fd_buff, &head_fdlist);
+			ft_delelem(fd_buff, head_fdlist);
 			return (-1);
 		}
 	}
