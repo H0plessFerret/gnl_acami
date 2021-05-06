@@ -6,7 +6,7 @@
 /*   By: acami <acami@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/06 12:08:44 by acami             #+#    #+#             */
-/*   Updated: 2021/05/06 12:08:54 by acami            ###   ########.fr       */
+/*   Updated: 2021/05/06 12:31:48 by acami            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ struct s_fdlist
 };
 
 int			get_next_line(int fd, char **line);
+int			ft_read_and_validate(int fd, t_fdlist *fd_buff,
+				t_fdlist **head_fdlist);
 int			ft_copy_buffer(t_fdlist *fd_buff, char **line,
 				int *current_line_pos);
 void		*ft_realloc_str(char *line, size_t old_size, size_t new_size);
